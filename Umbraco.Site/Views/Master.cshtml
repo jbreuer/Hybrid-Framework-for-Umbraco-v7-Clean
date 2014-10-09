@@ -1,0 +1,31 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<IMasterModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@Model.SeoTitle</title>
+    <meta name="description" content="@Model.SeoDescription">
+
+    @CruncherBundler.RenderCSS("bootstrapcss")
+
+    @CruncherBundler.RenderJavaScript("jquery", "bootstrapjs", "slimmage.js")
+</head>
+<body>
+    <nav>
+        <ul>
+            @foreach (var m in Model.MenuItems)
+            {
+                <li class="@m.ActiveClass"><a href="@m.Url">@m.Title</a></li>
+            }
+        </ul>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+</body>
+</html>
